@@ -1,0 +1,43 @@
+.servicios-container {
+  padding: 40px;
+ 
+
+  h2 {
+    text-align: center;
+    font-size: 2.4rem;
+    color: #d32f2f;
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+
+  .servicios-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+
+    align-items: center;
+    justify-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+
+
+  }
+
+  .servicio {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+
+  .fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-out {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}

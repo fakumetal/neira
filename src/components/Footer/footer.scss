@@ -1,0 +1,38 @@
+.footer {
+  background-color: white;
+  border-top: 1px solid #e0e0e0;
+  padding: 1.5rem 0;
+  border-top: 4px solid #b00000;
+ 
+  margin-top: 50px;
+ width: 99vw;
+ 
+  .footer-content {
+ 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+ 
+ 
+    p {
+      color: #333;
+ 
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+
+      a {
+        color: #C41E3A;
+        font-size: 1.5rem;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: darken(#C41E3A, 10%);
+        }
+      }
+    }
+  }
+}
+  
