@@ -1,4 +1,4 @@
-import   { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './services.scss';
 import Card from '../../../../components/Card/Card';
 import servicios1 from '/assets/servicios/servicios1.jpg';
@@ -8,22 +8,26 @@ import servicios3 from '/assets/servicios/servicios3.jpg';
 const Services = () => {
   const servicesRef = useRef([]);
   const titleRef = useRef(null);
-  const [visibleCards, setVisibleCards] = useState([]);
   const [isTitleVisible, setIsTitleVisible] = useState(false);
+  const [hasTitleBeenSeen, setHasTitleBeenSeen] = useState(false); 
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.target === titleRef.current) {
-            setIsTitleVisible(entry.isIntersecting);
+          
+            if (entry.isIntersecting && !hasTitleBeenSeen) {
+              setIsTitleVisible(true);
+              setHasTitleBeenSeen(true);  
+            }
           } else {
             const index = servicesRef.current.indexOf(entry.target);
-            if (index !== -1) {
-              if (entry.isIntersecting) {
-                setVisibleCards((prev) => [...new Set([...prev, index])]);
-              } else {
-                setVisibleCards((prev) => prev.filter((i) => i !== index));
+            if (index !== -1 && entry.isIntersecting) {
+              // Solo agregar la clase de fade-in una vez
+              if (!entry.target.classList.contains('fade-in')) {
+                entry.target.classList.add('fade-in');
+                entry.target.classList.remove('fade-out');
               }
             }
           }
@@ -38,7 +42,7 @@ const Services = () => {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [hasTitleBeenSeen]);  
 
   const cards = [
     {
@@ -71,7 +75,7 @@ const Services = () => {
           <div
             key={index}
             ref={(el) => (servicesRef.current[index] = el)}
-            className={`servicio ${visibleCards.includes(index) ? 'fade-in' : 'fade-out'}`}
+            className="servicio fade-out"  
           >
             <Card title={card.title} description={card.description} image={card.image} />
           </div>

@@ -1,22 +1,24 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import './header.scss';
 import logo from '/logo.png';
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prevState) => !prevState);
   };
 
   return (
     <header className="header">
       <div className="header__logo">
-        <img style={{width: '100px', height: '100px'}} src={logo} alt="logo" />
+        <img style={{ width: '100px', height: '100px' }} src={logo} alt="logo" />
         <div>
           <h1>NeiraSeguridad</h1>
           <p>Experto en casi todo</p>
         </div>
       </div>
+     
       <nav className={`header__nav ${isMenuOpen ? 'header__nav--open' : ''}`}>
         <ul>
           <li><a href="#home">HOME</a></li>
@@ -26,7 +28,13 @@ const Header = () => {
           <li><a href="#contacto">CONTACTO</a></li>
         </ul>
       </nav>
-      <div className="header__menu-icon" onClick={toggleMenu}>
+      {/*  Menú hamburguesa */}
+      <div 
+        className="header__menu-icon" 
+        onClick={toggleMenu} 
+        aria-label="Toggle Menu"
+        aria-expanded={isMenuOpen}
+      >
         <div className="bar"></div>
         <div className="bar"></div>
         <div className="bar"></div>

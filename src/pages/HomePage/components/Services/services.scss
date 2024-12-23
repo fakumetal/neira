@@ -1,6 +1,17 @@
 .servicios-container {
   padding: 40px;
  
+  .servicio:nth-child(1) {
+    transition-delay: 0.2s;
+  }
+
+  .servicio:nth-child(2) {
+    transition-delay: 0.4s;
+  }
+
+  .servicio:nth-child(3) {
+    transition-delay: 0.6s;
+  }
 
   h2 {
     text-align: center;
@@ -8,7 +19,7 @@
     color: #d32f2f;
     margin-bottom: 40px;
     opacity: 0;
-    transform: translateY(20px);
+
     transition: opacity 1s ease, transform 1s ease;
   }
 
@@ -16,13 +27,22 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
-
     align-items: center;
     justify-items: center;
     max-width: 1200px;
     margin: 0 auto;
 
+    @media (max-width: 1280px) {
+      display: flex;
+      flex-wrap: wrap;  // Permitir el wrap de las tarjetas
+      justify-content: space-between;
+      
 
+      .servicio {
+        flex: 0 0 auto;
+  
+      }
+    }
   }
 
   .servicio {
@@ -40,4 +60,14 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
+  @media (max-width: 1280px) {
+    
+ 
+    h2 {
+ 
+      font-size: 2rem;
+ 
+    }
+}
 }

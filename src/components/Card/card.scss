@@ -1,37 +1,71 @@
 .card {
-    background-color: #ffffff;
-    padding: 20px;
+  position: relative;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  max-width: 350px;
+  height: 500px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+
+  .card-background {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 100%;
+    height: 100%;
+    background-color: #1f5072;
+    z-index: -1;
     border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    max-width: 350px;
-    height: 500px;
-    text-align: center;
-    transition: transform 0.3s ease;
-  
-    .card-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
-  
+    transform: translateZ(-1px);
+  }
+
+  .card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .card-title {
+    font-size: 1.3rem;
+    color: #D22E2E;
+    margin-bottom: 10px;
+  }
+
+  .card-description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  &:hover {
+    transform: translateY(-7px);
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 1280px) {
+ 
+    width: 240px;  
+    height: 420px; 
+ 
+
     .card-title {
-      font-size: 1.3rem;
-      color: #d32f2f; /* Rojo */
-      margin-bottom: 10px;
+      font-size: 1.17rem; // Reducir tamaño de fuente
     }
-  
+
     .card-description {
-      font-size: 1rem;
-      color: #555;
-      line-height: 1.6;
+      font-size: 0.9rem; // Reducir tamaño de fuente
     }
-  
-    &:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    .card-image {
+      height: 150px; // Ajustar altura de la imagen
     }
   }
-  
+}
